@@ -119,9 +119,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         });
 
         // 初始化按钮
-        sonLinearLayout1 = addSonLinearLayout (this, "编辑想法", R.drawable.ic_son_button1);
-        sonLinearLayout2 = addSonLinearLayout (this, "编辑点子", R.drawable.ic_son_button1);
-        sonLinearLayout3 = addSonLinearLayout (this, "编辑灵感", R.drawable.ic_son_button1);
+        sonLinearLayout1 = addSonLinearLayout (this, "编辑想法", R.drawable.ic_sonbutton1);
+        sonLinearLayout2 = addSonLinearLayout (this, "编辑点子", R.drawable.ic_sonbutton2);
+        sonLinearLayout3 = addSonLinearLayout (this, "编辑灵感", R.drawable.ic_sonbutton3);
 
         centerButton = (IwfuCenterButton) findViewById (R.id.centerButton);
         centerButton.setCenterButtonListener (new IwfuCenterButton.CenterButtonListener () {
