@@ -12,7 +12,7 @@ import com.lingxian.lingxian.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class WodeFragment extends Fragment {
+public class WodeFragment extends Fragment{
 
 
     public WodeFragment () {

@@ -1,13 +1,23 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context="com.lingxian.lingxian.fragment.XiangfaFragment">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.lingxian.lingxian.fragment.XiangfaFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!--<android.support.v4.view.ViewPager-->
+        <!--android:id="@+id/xiangfaFrag_rv_vp"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+
+    <!--</android.support.v4.view.ViewPager>-->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/xiangfaFrag_rv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="想法"/>
+        android:layout_height="match_parent">
 
-</FrameLayout>
+    </android.support.v7.widget.RecyclerView>
+
+
+</LinearLayout>

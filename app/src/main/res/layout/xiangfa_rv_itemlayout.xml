@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/xiangfaFrag_rv_rl"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:elevation="3dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    tools:targetApi="lollipop">
+
+    <ImageView
+        android:id="@+id/xiangfaFrag_rv_iv_thumbNail"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:src="@mipmap/ic_launcher"/>
+
+    <TextView
+        android:id="@+id/xiangfaFrag_rv_tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_toRightOf="@id/xiangfaFrag_rv_iv_thumbNail"
+        android:text="XXXXXX想法"
+        android:textSize="20sp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:orientation="horizontal">
+
+
+        <ImageView
+            android:id="@+id/xiangfaFrag_rv_iv_avatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_xiangfa_selected"/>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="发布于"/>
+
+        <TextView
+            android:id="@+id/xiangfaFrag_rv_tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="2016-10-9"/>
+    </LinearLayout>
+</RelativeLayout>
