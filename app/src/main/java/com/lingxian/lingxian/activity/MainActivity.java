@@ -4,16 +4,19 @@ import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.animation.BounceInterpolator;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -31,6 +34,7 @@ public class MainActivity extends FragmentActivity
 		implements
 			View.OnClickListener {
 
+	private FrameLayout contentMain;
 	private RelativeLayout main_rl;
 	private Fragment curFragment; // 代表当前显示的Fragment
 	private XiangfaFragment tab1Fragment;
@@ -41,6 +45,8 @@ public class MainActivity extends FragmentActivity
 	private LinearLayout sonLinearLayout1;
 	private LinearLayout sonLinearLayout2;
 	private LinearLayout sonLinearLayout3;
+	private ImageButton ib_search;
+	private ImageButton ib_message;
 
 	/**
 	 * 为页面加载初始状态的Fragment
@@ -80,11 +86,17 @@ public class MainActivity extends FragmentActivity
 	}
 
 	private void init() {
+		contentMain = (FrameLayout) findViewById (R.id.content_main);
 		main_rl = (RelativeLayout) findViewById(R.id.main_rl);
 		IwfuBottomBar ibb = (IwfuBottomBar) findViewById(R.id.ibb);
+		//初始化toolbar
+		final Toolbar toolbar = (Toolbar) findViewById (R.id.toolbar);
+		toolbar.setTitle ("想法");
+
 		ibb.bindFragmentSwitcherListener(new IwfuBottomBar.FragmentSwichterListener() {
 			@Override
 			public void onTab1Selected() {
+				toolbar.setTitle ("想法");
 				if (tab1Fragment == null) {
 					tab1Fragment = new XiangfaFragment();
 				}
@@ -93,6 +105,7 @@ public class MainActivity extends FragmentActivity
 
 			@Override
 			public void onTab2Selected() {
+				toolbar.setTitle ("点子");
 				if (tab2Fragment == null) {
 					tab2Fragment = new DianziFragment();
 				}
@@ -101,6 +114,7 @@ public class MainActivity extends FragmentActivity
 
 			@Override
 			public void onTab3Selected() {
+				toolbar.setTitle ("灵感");
 				if (tab3Fragment == null) {
 					tab3Fragment = new LingganFragment();
 				}
@@ -110,6 +124,7 @@ public class MainActivity extends FragmentActivity
 
 			@Override
 			public void onTab4Selected() {
+				toolbar.setTitle ("我的");
 				if (tab4Fragment == null) {
 					tab4Fragment = new WodeFragment();
 				}
@@ -130,6 +145,7 @@ public class MainActivity extends FragmentActivity
 				.setCenterButtonListener(new IwfuCenterButton.CenterButtonListener() {
 					@Override
 					public void openCenterButton() {
+						contentMain.setAlpha (0.3f);
 						// 当按钮打开,弹出三个子按钮
 						float startX = centerButton.getX() + 10;
 						toggleSonButtons(sonLinearLayout1, startX,
@@ -143,6 +159,7 @@ public class MainActivity extends FragmentActivity
 					@Override
 					public void closeCenterButton() {
 						// 当按钮关闭,回收三个子按钮
+						contentMain.setAlpha (1.0f);
 						toggleSonButtons(sonLinearLayout1,
 								sonLinearLayout1.getX(),
 								sonLinearLayout1.getY(), -180f, -180f);
@@ -154,7 +171,14 @@ public class MainActivity extends FragmentActivity
 								sonLinearLayout3.getY(), 180f, -180f);
 					}
 				});
+
+		ib_search = (ImageButton) findViewById (R.id.search);
+		ib_message = (ImageButton) findViewById (R.id.message);
+
+		ib_search.setOnClickListener (this);
+		ib_message.setOnClickListener (this);
 	}
+
 	/**
 	 * 切换子按钮的动画
 	 *
@@ -178,8 +202,20 @@ public class MainActivity extends FragmentActivity
 				"translationX", startX, startX - deltaX);
 		ObjectAnimator transYAnimator = ObjectAnimator.ofFloat(target,
 				"translationY", startY, startY - deltaY);
+		//新增放大缩小动画，简单的通过传入的值判断是关闭还是打开
+		ObjectAnimator scaleXAnimator = null;
+		ObjectAnimator scaleYAnimator = null;
+		if (deltaY>0f){
+			//弹出，进行放大
+			scaleXAnimator = ObjectAnimator.ofFloat (target,"scaleX",0.0f,1.0f);
+			scaleYAnimator = ObjectAnimator.ofFloat (target,"scaleY",0.0f,1.0f);
+		}else{
+			//回收，进行缩小
+			scaleXAnimator = ObjectAnimator.ofFloat (target,"scaleX",1.0f,0.0f);
+			scaleYAnimator = ObjectAnimator.ofFloat (target,"scaleY",1.0f,0.0f);
+		}
 
-		set.playTogether(transXAnimator, transYAnimator);
+		set.playTogether(transXAnimator, transYAnimator,scaleXAnimator,scaleYAnimator);
 		set.setDuration(400);
 		set.setInterpolator(new BounceInterpolator());
 		set.setTarget(target);
@@ -254,10 +290,12 @@ public class MainActivity extends FragmentActivity
 			Log.d("tag", "sonLL1 pressed");
 		} else if (v.getTag().equals("编辑点子")) {
 			Log.d("tag", "sonLL2 pressed");
-
 		} else if (v.getTag().equals("编辑灵感")) {
 			Log.d("tag", "sonLL3 pressed");
-
+		}else if (v.getId ()==R.id.search){
+			startActivity (new Intent (MainActivity.this,SearchActivity.class));
+		}else if (v.getId ()==R.id.message){
+			startActivity (new Intent (MainActivity.this,MessageActivity.class));
 		}
 	}
 }
