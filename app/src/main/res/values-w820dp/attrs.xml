@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BottomCenterButton">
+        <attr name="centerIconSrc" format="reference"/>
+        <attr name="firstSonIconSrc" format="reference"/>
+        <attr name="secondSonIconSrc" format="reference"/>
+        <attr name="thirdSonIconSrc" format="reference"/>
+        <attr name="firstSonIconText" format="string"/>
+        <attr name="secondSonIconText" format="string"/>
+        <attr name="thirdSonIconText" format="string"/>
+
+    </declare-styleable>
+</resources>
