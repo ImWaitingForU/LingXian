@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.lingxian.lingxian.R;
-import com.lingxian.lingxian.adapter.SimpleAdapter;
+import com.lingxian.lingxian.adapter.DianziRvAdapter;
 import com.lingxian.lingxian.bean.DianziBean;
 import com.lingxian.lingxian.divider.DividerItemDecoration;
 
@@ -31,7 +31,7 @@ public class DianziFragment extends Fragment {
 
     private RecyclerView mRecyclerView;
     private List<DianziBean> mDatas;
-    private SimpleAdapter mAdapter;
+    private DianziRvAdapter mAdapter;
     //private LinearLayout linOfItem;
 
 
@@ -49,7 +49,7 @@ public class DianziFragment extends Fragment {
         initDatas();
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.id_recyclerview);
-        mAdapter = new SimpleAdapter(getContext(), mDatas);
+        mAdapter = new DianziRvAdapter(getContext(), mDatas);
         mRecyclerView.setAdapter(mAdapter);
         //linOfItem= (LinearLayout) view.findViewById(R.id.lin_of_dianziitem);
 
@@ -61,7 +61,7 @@ public class DianziFragment extends Fragment {
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL_LIST));
 
 
-        mAdapter.setOnItemClickListener(new SimpleAdapter.OnItemClickListener() {
+        mAdapter.setOnItemClickListener(new DianziRvAdapter.OnItemClickListener() {
 
             @Override
             public void onItemLongClick(View view, int position) {
