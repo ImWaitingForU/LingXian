@@ -1,6 +1,5 @@
 package com.lingxian.lingxian.adapter;
 
-import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -15,15 +14,13 @@ import java.util.List;
 public class XiangfaFragViewPagerAdapter extends FragmentStatePagerAdapter {
 
 	private List<Fragment> fragmentList;
-	private String[] tabTitleArray;
-	private Context context;
+	private List<String> tabTitleList;
 
-	public XiangfaFragViewPagerAdapter(FragmentManager fm, Context context,
-			List<Fragment> fragmentList, String[] tabTitleArray) {
+	public XiangfaFragViewPagerAdapter(FragmentManager fm,
+			List<Fragment> fragmentList, List<String> tabTitleList) {
 		super(fm);
-		this.context = context;
 		this.fragmentList = fragmentList;
-		this.tabTitleArray = tabTitleArray;
+		this.tabTitleList = tabTitleList;
 	}
 	@Override
 	public Fragment getItem(int position) {
@@ -39,6 +36,6 @@ public class XiangfaFragViewPagerAdapter extends FragmentStatePagerAdapter {
 
 	@Override
 	public CharSequence getPageTitle(int position) {
-		return tabTitleArray[position % tabTitleArray.length];
+		return tabTitleList.get(position % tabTitleList.size());
 	}
 }

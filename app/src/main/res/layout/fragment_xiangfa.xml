@@ -1,44 +1,43 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context="com.lingxian.lingxian.fragment.XiangfaFragment">
 
     <LinearLayout
-        android:elevation="4dp"
         android:layout_width="match_parent"
-        android:orientation="horizontal"
+        android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
-        android:layout_height="wrap_content">
+        android:elevation="4dp"
+        android:orientation="horizontal">
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tabLayout"
-            app:tabIndicatorColor="#ffffff"
-            app:tabSelectedTextColor="#000000"
-            app:tabTextColor="#ffffff"
-            app:tabGravity="center"
-            app:tabMode="scrollable"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_height="wrap_content">
+            app:tabGravity="center"
+            app:tabIndicatorColor="#ffffff"
+            app:tabMode="scrollable"
+            app:tabSelectedTextColor="#000000"
+            app:tabTextColor="#ffffff">
         </android.support.design.widget.TabLayout>
 
         <ImageButton
             android:id="@+id/xiangfaFrag_addtab"
-            android:layout_margin="5dp"
-            android:layout_gravity="center"
-            android:background="@color/colorPrimary"
-            android:src="@drawable/ic_addtab"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:background="@color/colorPrimary"
+            android:src="@drawable/ic_addtab"/>
 
     </LinearLayout>
 
     <android.support.v4.view.ViewPager
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:id="@+id/xiangfaFrag_vp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
