@@ -4,8 +4,9 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_alignParentBottom="true"
-    android:layout_margin="20dp">
-    
+    android:layout_gravity="bottom"
+    android:padding="20dp">
+
     <ImageButton
         android:id="@+id/ib_back"
         android:layout_width="wrap_content"
@@ -13,6 +14,7 @@
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:background="@drawable/bottom_bg"
+        android:elevation="1dp"
         android:src="@drawable/ic_back"/>
 
     <ImageButton
@@ -22,6 +24,20 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:background="@drawable/bottom_bg"
+        android:elevation="1dp"
         android:src="@drawable/ic_ok"/>
+
+    <ImageButton
+        android:id="@+id/ib_like"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@+id/ib_ok"
+        android:layout_toStartOf="@+id/ib_ok"
+        android:background="@drawable/bottom_bg"
+        android:elevation="1dp"
+        android:src="@drawable/ic_ok"
+        android:visibility="gone"/>
 
 </RelativeLayout>

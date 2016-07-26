@@ -127,7 +127,7 @@ public class MainActivity extends FragmentActivity
 		centerButton.setOnSonButtonClickListener (new BottomCenterButton.SonButtonClickListener () {
 			@Override
 			public void onSonButton1Clicked (View sonButton1) {
-				Log.d ("tag", "sonButton1 clicked~~~");
+				startActivity (new Intent (MainActivity.this,EditXiangfaActivity.class));
 			}
 
 			@Override
@@ -150,112 +150,6 @@ public class MainActivity extends FragmentActivity
 		ib_search.setOnClickListener(this);
 		ib_message.setOnClickListener(this);
 	}
-
-	// /**
-	// * 切换子按钮的动画
-	// *
-	// * @param target
-	// * 子按钮
-	// * @param startX
-	// * 开始X
-	// * @param startY
-	// * 开始Y
-	// * @param deltaX
-	// * X变化
-	// * @param deltaY
-	// * Y变化
-	// */
-	// private void toggleSonButtons(final View target, float startX,
-	// float startY, float deltaX, float deltaY) {
-	// target.setVisibility(View.VISIBLE);
-	// AnimatorSet set = new AnimatorSet();
-	//
-	// ObjectAnimator transXAnimator = ObjectAnimator.ofFloat(target,
-	// "translationX", startX, startX - deltaX);
-	// ObjectAnimator transYAnimator = ObjectAnimator.ofFloat(target,
-	// "translationY", startY, startY - deltaY);
-	// //新增放大缩小动画，简单的通过传入的值判断是关闭还是打开
-	// ObjectAnimator scaleXAnimator = null;
-	// ObjectAnimator scaleYAnimator = null;
-	// if (deltaY>0f){
-	// //弹出，进行放大
-	// scaleXAnimator = ObjectAnimator.ofFloat (target,"scaleX",0.0f,1.0f);
-	// scaleYAnimator = ObjectAnimator.ofFloat (target,"scaleY",0.0f,1.0f);
-	// }else{
-	// //回收，进行缩小
-	// scaleXAnimator = ObjectAnimator.ofFloat (target,"scaleX",1.0f,0.0f);
-	// scaleYAnimator = ObjectAnimator.ofFloat (target,"scaleY",1.0f,0.0f);
-	// }
-	//
-	// set.playTogether(transXAnimator,
-	// transYAnimator,scaleXAnimator,scaleYAnimator);
-	// set.setDuration(400);
-	// set.setInterpolator(new BounceInterpolator());
-	// set.setTarget(target);
-	// set.addListener(new Animator.AnimatorListener() {
-	// @Override
-	// public void onAnimationStart(Animator animation) {
-	//
-	// }
-	//
-	// @Override
-	// public void onAnimationEnd(Animator animation) {
-	// if (IwfuCenterButton.isOpen) {
-	// target.setVisibility(View.GONE);
-	// }
-	// }
-	//
-	// @Override
-	// public void onAnimationCancel(Animator animation) {
-	//
-	// }
-	//
-	// @Override
-	// public void onAnimationRepeat(Animator animation) {
-	//
-	// }
-	// });
-	// set.start();
-	// }
-	//
-	// /**
-	// * 添加子按钮
-	// *
-	// * @param context
-	// * 上下文
-	// * @param title
-	// * 子按钮下的文本提示
-	// * @param resId
-	// * 子按钮图标
-	// * @return 新建的子按钮
-	// */
-	// private LinearLayout addSonLinearLayout(Context context, String title,
-	// int resId) {
-	// LinearLayout sonLinearLayout = new LinearLayout(context);
-	// sonLinearLayout.setOrientation(LinearLayout.VERTICAL);
-	// sonLinearLayout.setBackgroundColor(Color.TRANSPARENT);
-	//
-	// ImageButton sonButton = new ImageButton(context);
-	// sonButton.setImageResource(resId);
-	// sonButton.setBackgroundColor(Color.TRANSPARENT);
-	// sonButton.setTag(title);
-	// sonButton.setOnClickListener(this);
-	//
-	// TextView sonTv = new TextView(context);
-	// sonTv.setText(title);
-	// sonTv.setTextSize(12);
-	// sonTv.setTextColor(Color.BLACK);
-	// sonTv.setGravity(Gravity.CENTER);
-	// sonTv.setPadding(5, 5, 5, 5);
-	// sonTv.setBackgroundColor(Color.GRAY);
-	//
-	// sonLinearLayout.addView(sonButton);
-	// sonLinearLayout.addView(sonTv);
-	// sonLinearLayout.setVisibility(View.GONE);
-	// main_rl.addView(sonLinearLayout);
-	//
-	// return sonLinearLayout;
-	// }
 
 	@Override
 	public void onClick(View v) {
